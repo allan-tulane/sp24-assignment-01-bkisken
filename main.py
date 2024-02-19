@@ -12,16 +12,15 @@ def foo(x):
   
 
 def longest_run(mylist, key):
-    len = 0
+    length = 0
     count = 0
     for num in mylist:
       if num == key:
         count+=1
-        if count > len:
-          len = count
+        length = max(length, count)
       else:
-        len = 0
-    return count      
+        count = 0
+    return length   
 
 
 class Result:
