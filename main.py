@@ -48,32 +48,26 @@ def to_value(v):
         return int(v)
         
 def longest_run_recursive(mylist, key):
-    if not mylist:
-        return Result(0, 0, 0, False)
-    if len(mylist) == 1:
-        if mylist[0] == key:
-            return Result(1, 1, 1, True)
-        else:
-            return Result(0, 0, 0, False)
+  if len(mylist) == 1:
+    is_key = mylist[0] == key
+    return Result(int(is_key), int(is_key), int(is_key), is_key)
 
-    mid = len(mylist) // 2
-    left_sublist = mylist[:mid]
-    right_sublist = mylist[mid:]
+  mid = len(mylist) // 2
+  left_result = longest_run_recursive(mylist[:mid], key)
+  right_result = longest_run_recursive(mylist[mid:], key)
 
-    left_result = longest_run_recursive(left_sublist, key)
-    right_result = longest_run_recursive(right_sublist, key)
+  is_entire_range = left_result.is_entire_range and     right_result.is_entire_range and mylist[0] == key and mylist[-1] == key
 
-    left_size = left_result.left_size
-    if left_result.is_entire_range and len(right_sublist) > 0 and right_sublist[0] == key:
-        left_size += right_result.left_size
+  cross_run = left_result.right_size + right_result.left_size if mylist[mid - 1] == key and mylist[mid] == key else 0
 
-    right_size = right_result.right_size
-    if right_result.is_entire_range and len(left_sublist) > 0 and left_sublist[-1] == key:
-        right_size += left_result.right_size
+  longest_size = max(left_result.longest_size, right_result.longest_size, cross_run)
 
-    longest_size = max(left_result.longest_size, right_result.longest_size, left_result.right_size + right_result.left_size)
+  left_size = left_result.left_size if left_result.is_entire_range else   left_result.left_size
+  right_size = right_result.right_size if right_result.is_entire_range else right_result.right_size
 
-    is_entire_range = left_result.is_entire_range and right_result.is_entire_range
+  if mylist[mid - 1] == key and left_result.is_entire_range:
+    left_size += right_result.left_size
+  if mylist[mid] == key and right_result.is_entire_range:
+    right_size += left_result.right_size
 
-    return Result(left_size, right_size, longest_size, is_entire_range)
-
+  return Result(left_size, right_size, longest_size, is_entire_range)
