@@ -48,6 +48,8 @@ def to_value(v):
         return int(v)
         
 def longest_run_recursive(mylist, key):
+    if not mylist:
+        return Result(0, 0, 0, False)
     if len(mylist) == 1:
         if mylist[0] == key:
             return Result(1, 1, 1, True)
@@ -74,5 +76,4 @@ def longest_run_recursive(mylist, key):
     is_entire_range = left_result.is_entire_range and right_result.is_entire_range
 
     return Result(left_size, right_size, longest_size, is_entire_range)
-
 
