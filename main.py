@@ -9,15 +9,16 @@ def foo(x):
     return x
   else:
     return foo(x-1) + foo(x-2)
-    pass
+  
 
 def longest_run(mylist, key):
     len = 0
     count = 0
     for num in mylist:
       if num == key:
-        count+=1;
-        len = max(len,count)
+        count+=1
+        if count > len:
+          len = count
       else:
         len = 0
     return count      
