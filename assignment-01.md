@@ -2,7 +2,7 @@
 
 # CMPS 2200 Assignment 1
 
-**Name:**_________________________
+**Name:**__Brian Kisken______
 
 
 In this assignment, you will learn more about asymptotic notation, parallelism, functional languages, and algorithmic cost models. As in the recitation, some of your answer will go here and some will go in `main.py`. You are welcome to edit this `assignment-01.md` file directly, or print and fill in by hand. If you do the latter, please scan to a file `assignment-01.pdf` and push to your github repository. 
@@ -61,7 +61,7 @@ $$
   - 2a. (6 pts) Translate this to Python code -- fill in the `def foo` method in `main.py`  
 
   - 2b. (6 pts) What does this function do, in your own words?  
-
+.  It computes the xth term of the Fibonacci sequence. It checks if the x-1 and x-2 place and then perform the sequence to sum until it reaches a base case. 
 .  
 .  
 .  
@@ -92,13 +92,11 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
 
   - 3b. (4 pts) What is the Work and Span of this implementation?  
 
+. work is O(n)
+. Span is O(1) 
 .  
 .  
-.  
-.  
-.  
-.  
-.  
+. 
 .  
 .  
 
@@ -108,8 +106,8 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
   - 3d. (4 pts) What is the Work and Span of this sequential algorithm?  
 .  
 .  
-.  
-.  
+.  Work: O(n)
+  Span: O(log n)
 .  
 .  
 .  
@@ -123,8 +121,8 @@ E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`
 
 .  
 .  
-.  
-.  
+.  The work is still O(n)
+. The logarithmic nature is unchaned so the span remains O(log n) 
 .  
 .  
 .  
